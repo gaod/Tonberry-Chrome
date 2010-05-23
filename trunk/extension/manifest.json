@@ -1,0 +1,20 @@
+{
+  "name": "Tonberry for Chrome",
+  "version": "0.7.0",
+  "description": "A telnet BBS plug-in for Google Chrome.",
+  "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "icons": {
+      "48": "/icon48.png"
+  },
+   
+  "permissions": [ "tabs" ],
+  
+  "plugins": [
+    { "path": "nptonberry.dll", "public": false }
+  ]
+
+
+}

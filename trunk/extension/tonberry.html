@@ -1,0 +1,35 @@
+﻿
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tonberry</title>
+
+
+</head>
+
+
+<center>
+<object id="Term" style="position:relative;width:100%;height:100%" type="application/tonberry"></object>
+</center>
+
+
+<script>
+window.scrollbars.visible = false;
+
+window.onFocus = function() {
+    var term = document.getElementById("Term");
+    if( term )
+      term.focus();
+}
+
+window.onload = function() {
+}
+
+window.onunload = function(){
+	window.scrollbars.visible = true;
+}
+
+</script>
+<body style="margin:0; padding:0;">
+</body>
+</html>

@@ -1,0 +1,16 @@
+<script>
+    
+chrome.browserAction.onClicked.addListener(function(tab) {
+	
+	var containerUrl = chrome.extension.getURL("tonberry.html");
+	chrome.tabs.create({  url: containerUrl }, function(tab) {
+	});
+});
+
+function initialize()
+{
+}
+
+initialize();
+
+</script>
