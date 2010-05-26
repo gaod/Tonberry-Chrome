@@ -92,6 +92,9 @@ public:
 
 protected:
 	void CreateScriptableObject();
+	//-----------npruntime未實作之前之臨時方案-----------
+	void LoadIni(const char* filename, const char* section);
+	//---------------------------------------------------
 
 
 private:

@@ -50,6 +50,7 @@
 #include "telnetview.h"
 #include "site.h"
 #include "usermessage.h"
+#include "inifile.h"
 
 
 //////////////////////////////////////
@@ -142,7 +143,7 @@ NPBool nsPluginInstance::init(NPWindow* aWindow)
   GetClientRect( mhWnd, &rc );
   MoveWindow( m_pView->m_hWnd, 0, 0, rc.right, rc.bottom, TRUE );
 
-  m_Site.m_URL = "ptt.cc";
+  LoadIni("c:\\Tonberry_NPAPI.ini", "NPAPI PLUGINS");
   m_pView->NewCon(m_Site);
   m_pView->setFontFace(m_Site.m_FontFace.c_str());	m_pView->setFontFaceEn(m_Site.m_FontFaceEn.c_str());
   SetFocus(m_pView->m_hWnd);
@@ -393,3 +394,57 @@ long nsPluginInstance::getHWND()
   else
 	return -1;
 }
+
+
+//-----------npruntime未實作之前之臨時方案-----------
+void nsPluginInstance::LoadIni(const char* filename, const char* section)
+{
+	CIniFile ini;
+
+	if (!ini.Load(filename))
+	{
+		m_Site.m_URL = "ptt.cc";
+		return;
+	}
+
+	CIniSection* pSec;
+	pSec = ini.GetSection(section);
+
+	if (!pSec){
+		MessageBox(this->mhWnd, " INI 檔中的 section 內容不可為空值", "警告", MB_ICONQUESTION);
+		return;
+	}
+
+
+	m_Site.m_URL = pSec->GetKeyValue("URL");
+	m_Site.m_AutoReconnect = atoi(pSec->GetKeyValue("AutoReconnect").c_str());
+	m_Site.m_AntiIdle = atoi(pSec->GetKeyValue("AntiIdle").c_str());
+	m_Site.m_AntiIdleStr = pSec->GetKeyValue("AntiIdleStr");
+	m_Site.m_RowsPerPage = atoi(pSec->GetKeyValue("Rows").c_str());
+	m_Site.m_ColsPerPage = atoi(pSec->GetKeyValue("Cols").c_str());
+	m_Site.m_TermType = pSec->GetKeyValue("TermType");
+	m_Site.m_ESCConv = pSec->GetKeyValue("ESCConv");
+	m_Site.m_CRLF = atoi(pSec->GetKeyValue("CRLF").c_str());
+	m_Site.m_Startup = atoi(pSec->GetKeyValue("Startup").c_str());
+
+	/*g_Site.m_PreLoginPrompt = pSec->GetKeyValue("PreLoginPrompt");
+	g_Site.m_PreLogin = pSec->GetKeyValue("PreLogin");
+	g_Site.m_PostLogin = pSec->GetKeyValue("PostLogin");
+	g_Site.m_LoginPrompt = pSec->GetKeyValue("LoginPrompt");
+	g_Site.m_Login = pSec->GetKeyValue("Login");
+	g_Site.m_PasswdPrompt = pSec->GetKeyValue("PasswdPrompt");*/
+
+	m_Site.m_AutoDbcsDetection = atoi(pSec->GetKeyValue("AutoDbcsDetection").c_str());
+	m_Site.m_UseMouseBrowsing = atoi(pSec->GetKeyValue("UseMouseBrowsing").c_str());
+	m_Site.m_UseTextDragDrop = atoi(pSec->GetKeyValue("UseTextDragDrop").c_str());
+	m_Site.m_GesturesSensitivityX = atoi(pSec->GetKeyValue("GesturesSensitivityX").c_str());
+	m_Site.m_GesturesUseXAxisOnly = atoi(pSec->GetKeyValue("GesturesUseXAxisOnly").c_str());
+	m_Site.m_MouseOverEffect = atoi(pSec->GetKeyValue("MouseOverEffect").c_str());
+	m_Site.m_GdippDraw = atoi(pSec->GetKeyValue("GdippDraw").c_str());
+	m_Site.m_FontSize = atoi(pSec->GetKeyValue("FontSize").c_str());
+	m_Site.m_FontFace = pSec->GetKeyValue("FontFace");
+	m_Site.m_FontFaceEn = pSec->GetKeyValue("FontFaceEn");
+	m_Site.m_UseIniFiles = atoi(pSec->GetKeyValue("UseIniFiles").c_str());
+
+}
+///---------------------------------------------------

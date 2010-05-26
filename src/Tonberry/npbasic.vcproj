@@ -270,6 +270,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\inifile.cpp"
+				>
+			</File>
+			<File
 				RelativePath="MouseGestures.cpp"
 				>
 				<FileConfiguration
@@ -582,6 +586,10 @@
 			</File>
 			<File
 				RelativePath="helperwnd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\inifile.h"
 				>
 			</File>
 			<File
