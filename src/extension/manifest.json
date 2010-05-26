@@ -1,6 +1,6 @@
 {
   "name": "Tonberry for Chrome",
-  "version": "0.7.0",
+  "version": "0.7.5",
   "description": "A telnet BBS plug-in for Google Chrome.",
   "background_page": "background.html",
   "browser_action": {
