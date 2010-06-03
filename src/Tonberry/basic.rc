@@ -199,8 +199,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,0,0,0
- PRODUCTVERSION 2,0,0,0
+ FILEVERSION 2,1,0,0
+ PRODUCTVERSION 2,1,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -215,17 +215,17 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", " "
+            VALUE "CompanyName", "neopro"
             VALUE "FileDescription", "Tonberry"
             VALUE "FileExtents", "nptonberry"
             VALUE "FileOpenName", "nptonberry"
-            VALUE "FileVersion", "2, 0, 0, 0"
+            VALUE "FileVersion", "2, 1, 0, 0"
             VALUE "InternalName", "Tonberry.embed"
             VALUE "LegalCopyright", "Copyright (C) 2010"
             VALUE "MIMEType", "application/tonberry"
             VALUE "OriginalFilename", "nptonberry.dll"
             VALUE "ProductName", "Tonberry NPAPI Plug-in"
-            VALUE "ProductVersion", "2, 0, 0, 0"
+            VALUE "ProductVersion", "2, 1, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
