@@ -75,11 +75,11 @@ LRESULT CTelnetView::WndProc(UINT msg, WPARAM wp, LPARAM lp)
 		}
 		break;
 
-	case WM_MOUSELEAVE:
+	/*case WM_MOUSELEAVE:
 		{
 			OnMouseLeave(wp, lp);
 		}
-		break;
+		break;*/
 
 	/*case WM_SETFOCUS:
 		{
@@ -1190,20 +1190,20 @@ void CTelnetView::OnLButtonUp(UINT flags, POINTS& pt)
 
 }
 
-LPARAM CTelnetView::OnMouseLeave(WPARAM wp, LPARAM lp)
+/*LPARAM CTelnetView::OnMouseLeave(WPARAM wp, LPARAM lp)
 {
 	m_bTrackLeave = FALSE;
 	//在這裡添加處理鼠標離開的代碼 ：
 	//
     return 0;
-}
+}*/
 
 void CTelnetView::OnMouseMove(UINT flags, POINTS& pt)
 {
 	if( !m_pTermData )
 		return;
 
-
+	/*
 	//*hack for NPAPI plugins*
     //滑鼠第一次移入窗口時， 請求一個WM_MOUSELEAVE 消息(在窗口內移動時，不請求)
 	if ( !m_bTrackLeave )
@@ -1217,7 +1217,7 @@ void CTelnetView::OnMouseMove(UINT flags, POINTS& pt)
 		SetFocus(m_hWnd);
 		m_bTrackLeave = TRUE;
 	}
-	//
+	//*/
 
 
 	int x = pt.x;

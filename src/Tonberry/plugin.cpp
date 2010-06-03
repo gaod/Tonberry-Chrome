@@ -187,10 +187,17 @@ static LRESULT CALLBACK PluginWinProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM
       MoveWindow( pi->m_pView->m_hWnd, 0, 0, LOWORD(lParam), HIWORD(lParam), TRUE );
     }
     break;
-	case WM_SETFOCUS:
-		if(pi){
-			if (pi->m_pView)
-				SetFocus(pi->m_pView->m_hWnd);
+	case WM_PAINT:
+		{
+			PAINTSTRUCT ps;
+			HDC dc = (HDC)BeginPaint( hWnd, &ps );
+			EndPaint( hWnd, &ps );
+
+			if(pi){
+				if (pi->m_pView)
+					SetFocus(pi->m_pView->m_hWnd);
+			}
+			return 0;
 		}
 	break;
 	case WM_USER_CONNECTION_CLOSE:
